@@ -1,5 +1,5 @@
 const links = {
-    github: "x7md",
+    github: "mushkhbat",
     insta: "mushkhbat",
     twitter: "mushkhbat",
     about: "https://git.x7md.net/about-me/"
