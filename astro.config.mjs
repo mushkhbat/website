@@ -17,6 +17,10 @@ export default defineConfig({
       rehypePlugins: [rehypeImg, [rehypeWrap, {
         selector: 'table',
         wrapper: 'figure'
+      }], 
+      [rehypeWrap, {
+        selector: 'img',
+        wrapper: 'picture.hi'
       }]]
     }
   )],
