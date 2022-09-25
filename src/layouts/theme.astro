@@ -63,7 +63,7 @@ const topicName = tagsName[content.tags[0]].name;
 		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet"> -->
 		<link rel="stylesheet" href="/style.css">
 		<!-- add title if there is. -->
-		<title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title>
+		<!-- <title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title> -->
 		</head>
 	<body data-url={content.url}>
 		<Navbar from="right" />
@@ -133,5 +133,29 @@ const topicName = tagsName[content.tags[0]].name;
 			])
 		}>
 		</script>
+	<style>
+		:global(figcaption) {
+			font-size: calc(var(--unit) * 2vw);
+		}
+		:global(picture){
+			position: relative;
+		}
+		:global(img[src$="#blur"]) {
+			position: relative;
+			filter: blur(.75rem);
+			object-fit: cover;
+			aspect-ratio: 16/9;
+		}
+	</style>
+	<script>
+		document.querySelectorAll('img[src$="#blur"]').forEach((ele)=> {
+			ele.addEventListener("click", (e)=> {
+				e.target.src = e.target.src.split("#")[0]
+				const clone = e.target.cloneNode(true);
+				e.target.replaceWith(clone);
+		})
+			
+		})
+	</script>
 	</body>
 </html>
