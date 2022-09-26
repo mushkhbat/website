@@ -3,6 +3,14 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import Comment from "@components/Comment";
 const {content} = Astro.props;
+const {origin} = Astro.url;
+import { Seo } from "astro-seo-meta"
+const urlFix = (urlString)=> {
+	if (urlString.indexOf('http://') === 0 || urlString.indexOf('https://') === 0){
+		return urlString;
+	}
+	return new URL(urlString, origin).href
+}
 ---
 <html lang="ar" dir="rtl">
 	<head>
@@ -12,8 +20,15 @@ const {content} = Astro.props;
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet"> -->
 		<link rel="stylesheet" href="/style.css">
+		<Seo 
+		title={"مشخبط" + (content.title ? " - " + content.title : "")}
+		description={content.desc}
+		colorScheme="dark"
+		twitter={{site: "@mushkhbat", image: urlFix("/assets/banner.png")}}
+		facebook={{image: urlFix("/assets/banner.png")}}
+		/>
 		<!-- add title if there is. -->
-		<title>{"مشخبط" + (content?.title ? " - " + content?.title : "")}</title>
+		<!-- <title>{"مشخبط" + (content?.title ? " - " + content?.title : "")}</title> -->
 		</head>
 	<body data-url={content?.url}>
 		<Navbar from="right" />
