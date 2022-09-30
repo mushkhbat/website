@@ -103,12 +103,13 @@ const topicName = tagsName[content.tags[0]].name;
 				"headline": content.title,
 				"image": urlFix(content.image),
 				"datePublished": new Date(content.date).toISOString(),
-				...(content?.dateModified ? new Date(content?.dateModified).toISOString() : {}),
 				"author": {
 					"@type": "Person",
 					"name": "حمد بنقالي",
 					"url": "https://x7md.net/about-me"
-					}, ...review 
+					}, ...review,
+				...(content?.dateModified ? {"dateModified": new Date(content?.dateModified).toISOString()} : {}),
+
 			},
 			{
 			"@context": "https://schema.org",
