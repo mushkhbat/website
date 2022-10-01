@@ -11,8 +11,9 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  
   integrations: [sitemap(), react(), mdx(
-    {remarkPlugins: {extends: [remarkUnwrap]},
+    {remarkPlugins: [remarkUnwrap],
       rehypePlugins: [rehypeImg,
       [rehypeWrap, {
         selector: 'table',
@@ -32,7 +33,9 @@ export default defineConfig({
             }
           }
         }
-      ]]
+      ]
+    ],
+    extendPlugins: 'astroDefaults'
     }
   )],
   site: "https://www.mushkhbat.com/"
