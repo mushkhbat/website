@@ -3,12 +3,13 @@ import Pages from "@layouts/pages.astro";
 const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
 const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 ---
-<Pages content={{title: "الأنمي"}}>
+<Pages content={{title: "الكرتون"}}>
     <div class="pt-3">
 		<section id="hero">
-			<h1 class="title">قائمة بتدوينات عن اﻷنمي</h1>
+			<h1 class="title">قائمة بتدوينات عن الكرتون</h1>
 			<p>
-                الرسوم المتحركة اليابانية (أنمي)، من وقت لأخر أتابع إحداها... ولكنني لست ذاك الشخص المهووس بها (Weeb) وأفضل الكرتون الأمريكي على الأنمي في الغالب.
+                الكرتون، هو المصطلح الشائع لوصف الرسوم المتحركة الأمريكية، والتي غالبًا ما تكون كوميدية، وقل ما 
+                
 			</p>
 		</section>
         <section>
