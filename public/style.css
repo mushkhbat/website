@@ -328,8 +328,12 @@ main {
     display: block;
     margin-top: var(--space-s);
     margin-bottom: var(--space-s);
-    margin-left: calc(-1 * var(--space-2xl));
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
     max-width: 100%;
+    width: 480px;
+    object-fit: contain;
 }
 iframe[src*="you"] {
     margin: auto;
@@ -405,6 +409,11 @@ figure {
     padding: 0;
     overflow-x: auto;
     font-weight: 200;
+    text-align: center;
+}
+
+figure.table {
+  text-align: right;
 }
 
 .container {
