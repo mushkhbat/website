@@ -27,7 +27,7 @@ export default defineConfig({
           rewrite: (node) => {
             if(node.tagName == 'img'){
               Object.assign(node.properties, {
-                hight: '720',
+                height: '720',
                 width: '1280'
               })
             }
