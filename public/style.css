@@ -447,6 +447,15 @@ ul.nav > a {
 ul.nav > a:hover {
     opacity: 65%;
 }
+
+footer li a {
+  animation-duration: 750ms;
+}
+
+footer li a:hover {
+  opacity: 65%;
+}
+
 hr {
     border-color: var(--c-primary-2xlight);
 }
@@ -754,4 +763,9 @@ nav[aria-label=breadcrumb] li {
 
 :where(nav[aria-label=breadcrumb] li:not(:last-child))::after {
   content: " > ​";
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
