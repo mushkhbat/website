@@ -8,14 +8,17 @@ import tagsName from "@data/Topics.js"
 const {content} = Astro.props;
 const {origin} = Astro.url;
 const isReview = content.isReview;
+const moreDataForArticle = content.articleData;
 let review = {}
+let article = {}
+if (moreDataForArticle){
+	article = moreDataForArticle
+}
 if (isReview){
 review = { review: {
 			  "@type": "Review",
 			  "itemReviewed": {
-				"@type": content.itemReview.type,
-				"image": content.image,
-				"name": content.itemReview.name,
+				...content.itemReview
 			  },
 			  "reviewRating": {
 				"@type": "Rating",
@@ -58,12 +61,11 @@ const topicName = tagsName[content.tags[0]].name;
 		twitter={{site: "@mushkhbat", image: urlFix(content.image)}}
 		facebook={{image: urlFix(content.image)}}
 		/>
-		<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet"> -->
+		<meta property="og:site_name" content="mushkhbat">
+		<meta property="og:locale" content="ar_SA">
+		<meta property="og:type" content="article">
+		<link rel="canonical" href={new URL(content?.url, origin)}/>
 		<link rel="stylesheet" href="/style.css">
-		<!-- add title if there is. -->
-		<!-- <title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title> -->
 		</head>
 	<body data-url={content.url}>
 		<Navbar from="right" />
@@ -103,6 +105,7 @@ const topicName = tagsName[content.tags[0]].name;
 				"headline": content.title,
 				"image": urlFix(content.image),
 				"datePublished": new Date(content.date).toISOString(),
+				... article,
 				"author": {
 					"@type": "Person",
 					"name": "حمد بنقالي",
