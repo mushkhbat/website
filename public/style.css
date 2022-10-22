@@ -789,7 +789,9 @@ ul.gallery {
   margin-inline-end: 0px;
   padding-inline-start: 1rem;
   padding: 1rem;
-  background-color: var(--c-grey-7);
+  background-color: hsl(var(--greyHue), var(--greySaturation), 
+                    calc(var(--initialGreyLightness) - var(--greyscaleLightnessIncrement)
+                    * 6.75));
   border-radius: 5px;
 }
 summary > span {
