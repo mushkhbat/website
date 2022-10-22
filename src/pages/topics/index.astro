@@ -15,14 +15,14 @@ import Pages from "@layouts/pages.astro";
 			</p>
 		</section>
         <section>
-            <ul class="topic">
+            <dl class="topic">
                 {tags.map((item)=> {
                     return (
-                        <li class="topic">
-                           <section>
+                        <dt class="topic">
                             <h2>
                                 {tagsName[item].name}
                             </h2>
+                           <section>
                             <ol>
                                 {posts.filter((itm) => itm.frontmatter.tags == item)
                                 .map((i)=> <li>
@@ -32,10 +32,10 @@ import Pages from "@layouts/pages.astro";
                             </ol>
                             <hr />
                            </section>
-                        </li>
+                        </dt>
                     )
                 })}
-            </ul>
+            </dl>
         </section>
 	</div>
 </Pages>
@@ -57,10 +57,7 @@ import Pages from "@layouts/pages.astro";
         opacity: 0.5;
         background: var(--c-primary-2xlight);
     }
-    ol, ul {
-    padding-inline-start: 0;
-    }
-    ul.topic {
+    dl.topic {
         list-style: none;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -69,7 +66,7 @@ import Pages from "@layouts/pages.astro";
         grid-row-gap: 0px;
     }
     @media (max-width: 924px){
-        ul.topic {
+        font-display: ;.topic {
             grid-template-columns: 1fr;
         }
     }

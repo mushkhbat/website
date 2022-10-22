@@ -5,7 +5,7 @@ import { Seo } from "astro-seo-meta"
 import tagsName from "@data/Topics.js"
 // import Comment from "@components/Comment";
 // import Youtube from "@components/Youtube.astro";
-const {content} = Astro.props;
+const {content, headings} = Astro.props;
 const {origin} = Astro.url;
 const isReview = content.isReview;
 const moreDataForArticle = content.articleData;
@@ -14,6 +14,7 @@ let article = {}
 if (moreDataForArticle){
 	article = moreDataForArticle
 }
+
 if (isReview){
 review = { review: {
 			  "@type": "Review",
@@ -87,7 +88,24 @@ const topicName = tagsName[content.tags[0]].name;
 					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
 				</div>
 				<hr >
-            </div>
+				<div>
+					<details>
+					<summary>
+						<span>محتوى الصفحة</span>
+					</summary> 
+<menu class="toc">
+	{headings.map(itm => {
+		return (
+			<li data-depth={itm.depth}>
+				<a href={new URL(content?.url, origin) + "#" + itm.slug}>
+					{itm.text}
+				</a>
+			</li>)
+	})}
+</menu>
+					</details> 
+				</div>
+            	</div>
 
             <article class="content" id="article">
                 <slot></slot>

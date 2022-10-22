@@ -20,11 +20,13 @@
     "@astrojs/rss": "^1.0.2",
     "@astrojs/sitemap": "^1.0.0",
     "astro-seo-meta": "^1.0.2",
+    "mdast-util-toc": "^6.1.0",
     "rehype-figure-for-img": "^0.0.6",
     "rehype-rewrite": "^3.0.6",
     "rehype-wrap-all": "^1.1.0",
     "remark-extended-table": "^1.0.1",
     "remark-gfm": "^3.0.1",
+    "remark-toc": "^8.0.1",
     "remark-unwrap-images": "^3.0.1"
   }
 }
