@@ -19,9 +19,10 @@ import Pages from "@layouts/pages.astro";
                 {tags.map((item)=> {
                     return (
                         <dt class="topic">
-                            <h2>
+                            <df><h2>
                                 {tagsName[item].name}
                             </h2>
+                            </df>
                            <section>
                             <ol>
                                 {posts.filter((itm) => itm.frontmatter.tags == item)

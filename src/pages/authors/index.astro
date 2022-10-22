@@ -1,0 +1,33 @@
+---
+import Pages from "@layouts/pages.astro";
+---
+<Pages content={{title: "المُؤلفون"}}>
+    <div class="pt-3">
+		<section>
+			<h1 class="title">المألفون في مشخبط</h1>
+			<p>
+				فريق التأليق والتحرير في مدونة مشخبط.
+			</p>
+		</section>
+		<section class="content">
+			
+		</section>
+	</div>
+</Pages>
+<style>
+	h1.title {
+    color: var(--c-primary);
+	}
+	.pt-3 {
+		padding-top: 0.75rem;
+	}
+	section {
+		text-align: center;
+    	padding: calc(var(--unit) * 2);
+		padding-top: calc(var(--unit) * 4);
+		padding-bottom: calc(var(--unit) * 4);
+	}
+	section.content {
+		text-align: right;
+	}
+</style>
