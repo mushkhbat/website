@@ -119,7 +119,22 @@ const topicName = tagsName[content.tags[0]].name;
 		<script type="application/ld+json" 
 		set:html={
 		JSON.stringify(
-			[{
+			[
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "مشخبط",
+				"url":  origin,
+				"logo": "https://mushkhbat.com/assets/logo-mushkhbat.png"
+			},
+			{
+			  "@context" : "https://schema.org",
+			  "@type" : "WebSite",
+			  "name" : "مدونة مشخبط",
+			  "alternateName" : "مشخبط",
+			  "url" : origin
+			},	
+			{
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
 				"headline": content.title,
@@ -132,7 +147,6 @@ const topicName = tagsName[content.tags[0]].name;
 					"url": "https://x7md.net/about-me"
 					}, ...review,
 				...(content?.dateModified ? {"dateModified": new Date(content?.dateModified).toISOString()} : {}),
-
 			},
 			{
 			"@context": "https://schema.org",

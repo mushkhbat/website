@@ -39,5 +39,22 @@ const urlFix = (urlString)=> {
         </main>
 		<Footer />
 		<script is:inline src="/script.js"></script>
+		<script type="application/ld+json" set:html={
+			  JSON.stringify([
+			  {
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"url":  origin,
+				"logo": "https://mushkhbat.com/assets/logo-mushkhbat.png"
+			  },	
+			  {
+			  "@context" : "https://schema.org",
+			  "@type" : "WebSite",
+			  "name" : "مدونة مشخبط",
+			  "alternateName" : "مشخبط",
+			  "url" : origin
+			}])
+		}>
+		</script>
 	</body>
 </html>
