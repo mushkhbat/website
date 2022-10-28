@@ -1,0 +1,27 @@
+---
+// export interface Props {
+//   toc: [{ 
+//     text: string;
+//     depth: number;
+//     slug: string;
+//     // Add other props
+//   }];
+// }
+
+const { toc, depth = 2, slug } = Astro.props;
+const headings = toc.filter((it) => it.depth === depth);
+---
+
+<ol>
+{
+  headings.map((it, idx) => {
+    const nextHeading = headings[idx + 1];
+    const subHeadings = toc.slice(toc.indexOf(it) + 1, toc.indexOf(nextHeading));
+    const hasSubHeadings = subHeadings.length > 0;
+
+    return <li data-depth={it.depth}>{<a href={it.slug}>{it.text}</a>}{hasSubHeadings ? (
+      <Astro.self toc={subHeadings} depth={it.depth + 1} />
+    ) : null}</li>
+  })
+}
+</ol>

@@ -1,0 +1,151 @@
+
+button {
+    margin: var(--unit);
+    align-items: center;
+    background-color: rgb(42, 42, 42);
+    background-image: none;
+    border-color: rgb(42, 42, 42);
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.043) 0px 2px 0px 0px;
+    box-sizing: border-box;
+    color: rgb(224, 224, 224);
+    cursor: pointer;
+    display: flex;
+    font-weight: 500;
+    justify-content: center;
+    letter-spacing: normal;
+    line-height: 20px;
+    outline: none;
+    padding: var(--unit) calc(var(--unit) * 2);
+    position: relative;
+    tab-size: 4;
+    text-align: center;
+    transition-duration: 0.2s;
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
+    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    max-width: calc(100vw - var(--unit));
+    writing-mode: horizontal-tb;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  button:active {
+    transform: scale(1.055);
+  }
+  
+  button:hover {
+    -webkit-appearance: none;
+    background-color: rgba(31,31,31, 1);
+  }
+  
+  button:disabled {
+      border-style: dashed;
+      border-width: 1px;
+      opacity: 50%;
+      border-color: var(--c-primary-lightness);
+  }
+  
+  .user #userpic, .user-pic {
+      border-radius: 50%;
+      max-width: 3.05rem;
+  }
+  .user {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+  }
+  
+  .comment-box, .comment-area  {
+    margin-top: var(--unit);
+  }
+  
+  .comment-text p {
+    margin-top: 0;
+    margin-right: 3.05rem;
+  }
+  
+  .comment-area > textarea {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgb(68, 68, 68);
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(68, 68, 68);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(68, 68, 68);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(68, 68, 68);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    box-sizing: border-box;
+    color: rgb(224, 224, 224);
+    column-count: auto;
+    cursor: text;
+    display: block;
+    font-size: 14px;
+    font-stretch: 100%;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-east-asian: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-weight: 400;
+    min-height: calc(var(--unit) * 4);
+    letter-spacing: normal;
+    line-height: 20px;
+    overflow-wrap: break-word;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+    resize: vertical;
+    tab-size: 4;
+    text-align: start;
+    text-indent: 0px;
+    text-rendering: auto;
+    text-shadow: none;
+    text-size-adjust: 100%;
+    text-transform: none;
+    transition-delay: 0s;
+    transition-duration: 0.3s;
+    transition-property: box-shadow;
+    transition-timing-function: ease-in-out;
+    white-space: pre-wrap;
+    word-spacing: 0px;
+    writing-mode: horizontal-tb;
+    -webkit-font-smoothing: antialiased;
+    -webkit-rtl-ordering: logical;
+    -webkit-border-image: none;
+  }
+  
+  textarea:focus, textarea:focus-visible {
+    border-color: var(--c-primary-dark);
+  }
+  
+  .login-btn svg {
+    margin: 0 calc(var(--unit) / 2);
+    width: calc(var(--unit) * 2);
+  }
+  
+  .comment-control {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .comment-control button {
+    margin-right: 0px;
+    margin-left: 0px;
+  }  

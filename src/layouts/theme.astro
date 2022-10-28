@@ -3,6 +3,7 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import { Seo } from "astro-seo-meta"
 import tagsName from "@data/Topics.js"
+import TOC from "@components/TOC.astro";
 // import Comment from "@components/Comment";
 // import Youtube from "@components/Youtube.astro";
 const {content, headings} = Astro.props;
@@ -94,14 +95,15 @@ const topicName = tagsName[content.tags[0]].name;
 						<span>محتوى الصفحة</span>
 					</summary> 
 <menu class="toc">
-	{headings.map(itm => {
+	<!-- {headings.map(itm => {
 		return (
 			<li data-depth={itm.depth}>
 				<a href={new URL(content?.url, origin) + "#" + itm.slug}>
 					{itm.text}
 				</a>
 			</li>)
-	})}
+	})} -->
+<TOC toc={[...headings]} >
 </menu>
 					</details> 
 				</div>
