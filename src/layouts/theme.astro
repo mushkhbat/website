@@ -3,19 +3,24 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import { Seo } from "astro-seo-meta"
 import tagsName from "@data/Topics.js"
+import TOC from "@components/TOC.astro";
 // import Comment from "@components/Comment";
 // import Youtube from "@components/Youtube.astro";
-const {content} = Astro.props;
+const {content, headings} = Astro.props;
 const {origin} = Astro.url;
 const isReview = content.isReview;
+const moreDataForArticle = content.articleData;
 let review = {}
+let article = {}
+if (moreDataForArticle){
+	article = moreDataForArticle
+}
+
 if (isReview){
 review = { review: {
 			  "@type": "Review",
 			  "itemReviewed": {
-				"@type": content.itemReview.type,
-				"image": content.image,
-				"name": content.itemReview.name,
+				...content.itemReview
 			  },
 			  "reviewRating": {
 				"@type": "Rating",
@@ -58,12 +63,11 @@ const topicName = tagsName[content.tags[0]].name;
 		twitter={{site: "@mushkhbat", image: urlFix(content.image)}}
 		facebook={{image: urlFix(content.image)}}
 		/>
-		<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@155;435;600;900&display=swap" rel="stylesheet"> -->
+		<meta property="og:site_name" content="mushkhbat">
+		<meta property="og:locale" content="ar_SA">
+		<meta property="og:type" content="article">
+		<link rel="canonical" href={new URL(content?.url, origin)}/>
 		<link rel="stylesheet" href="/style.css">
-		<!-- add title if there is. -->
-		<!-- <title>{"مشخبط" + (content.title ? " - " + content.title : "")}</title> -->
 		</head>
 	<body data-url={content.url}>
 		<Navbar from="right" />
@@ -85,7 +89,25 @@ const topicName = tagsName[content.tags[0]].name;
 					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
 				</div>
 				<hr >
-            </div>
+				<div>
+					<details>
+					<summary>
+						<span>محتوى الصفحة</span>
+					</summary> 
+<menu class="toc">
+	<!-- {headings.map(itm => {
+		return (
+			<li data-depth={itm.depth}>
+				<a href={new URL(content?.url, origin) + "#" + itm.slug}>
+					{itm.text}
+				</a>
+			</li>)
+	})} -->
+<TOC toc={[...headings]} >
+</menu>
+					</details> 
+				</div>
+            	</div>
 
             <article class="content" id="article">
                 <slot></slot>
@@ -97,19 +119,34 @@ const topicName = tagsName[content.tags[0]].name;
 		<script type="application/ld+json" 
 		set:html={
 		JSON.stringify(
-			[{
+			[
+			{
+				"@context": "https://schema.org",
+				"@type": "Organization",
+				"name": "مشخبط",
+				"url":  origin,
+				"logo": "https://mushkhbat.com/assets/logo-mushkhbat.png"
+			},
+			{
+			  "@context" : "https://schema.org",
+			  "@type" : "WebSite",
+			  "name" : "مدونة مشخبط",
+			  "alternateName" : "مشخبط",
+			  "url" : origin
+			},	
+			{
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
 				"headline": content.title,
 				"image": urlFix(content.image),
 				"datePublished": new Date(content.date).toISOString(),
+				... article,
 				"author": {
 					"@type": "Person",
 					"name": "حمد بنقالي",
 					"url": "https://x7md.net/about-me"
 					}, ...review,
 				...(content?.dateModified ? {"dateModified": new Date(content?.dateModified).toISOString()} : {}),
-
 			},
 			{
 			"@context": "https://schema.org",
@@ -137,6 +174,7 @@ const topicName = tagsName[content.tags[0]].name;
 	<style>
 		:global(figcaption) {
 			font-size: calc(var(--unit) * 2vw);
+			line-height: normal;
 		}
 		:global(picture){
 			position: relative;

@@ -5,7 +5,7 @@ import rehypeWrap from "rehype-wrap-all"
 import react from "@astrojs/react";
 import sitemap from '@astrojs/sitemap';
 import rehypeRewrite from 'rehype-rewrite';
-
+import remarkToc from 'remark-toc'
 
 import mdx from "@astrojs/mdx";
 
@@ -13,11 +13,17 @@ import mdx from "@astrojs/mdx";
 export default defineConfig({
   
   integrations: [sitemap(), react(), mdx(
-    {remarkPlugins: [remarkUnwrap],
+    {remarkPlugins: [[remarkUnwrap], 
+      [remarkToc, {
+        tight: true, 
+        ordered: false,
+        heading: "محتوى الصفحة",
+        parents: ['root', 'listItem'],
+      }]],
       rehypePlugins: [rehypeImg,
       [rehypeWrap, {
         selector: 'table',
-        wrapper: 'figure'
+        wrapper: 'figure.table'
       }],
       [rehypeWrap, {
         selector: 'img[src$="#blur"]',
@@ -33,7 +39,7 @@ export default defineConfig({
             }
           }
         }
-      ]
+      ],
     ],
     extendPlugins: 'astroDefaults'
     }

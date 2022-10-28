@@ -1,16 +1,16 @@
 ---
 import Pages from "@layouts/pages.astro";
 ---
-<Pages content={{title: null}}>
+<Pages content={{title: "المُؤلفون"}}>
     <div class="pt-3">
 		<section>
-			<h1 class="title">مشخبط</h1>
+			<h1 class="title">المألفون في مشخبط</h1>
 			<p>
-				أكتب وأشارك الآراء عن الأعمال الإبداعية.
+				فريق التأليق والتحرير في مدونة مشخبط.
 			</p>
-			<p>
-				كرتون، أنمي، أنطباعات، موسيقى، وتقيمات...
-			</p>
+		</section>
+		<section class="content">
+			
 		</section>
 	</div>
 </Pages>
@@ -26,5 +26,8 @@ import Pages from "@layouts/pages.astro";
     	padding: calc(var(--unit) * 2);
 		padding-top: calc(var(--unit) * 4);
 		padding-bottom: calc(var(--unit) * 4);
+	}
+	section.content {
+		text-align: right;
 	}
 </style>

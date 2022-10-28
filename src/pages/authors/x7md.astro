@@ -1,0 +1,25 @@
+---
+const posts =  [...await Astro.glob('../blog/**/*.mdx')].sort((b, a) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
+const tags =  [
+        ... new Set(posts.map(post => post.frontmatter.tags).flat())
+    ];
+import tagsName from "@data/Topics.js"
+import Pages from "@layouts/pages.astro";
+---
+<Pages content={{title: "المواضيع"}}>
+    <section class="pt-3">
+    <h2>قصة مشخبط</h2>
+        <p>
+            بدايةً، أدعى حمد بنقالي، وتستطيع أن تصفني بأني شخص مهووس بأمور الحاسوب إلى حد ما، لذلك أنشأت مدونة
+            مشخبط لمشاركة آرائي وأهتماماتي على الإنترنت...
+        </p>
+        <p>
+            أنا أيضًا مبرمج مواقع، حاصل على الوسام الذهب في تحديات جافاسكربت في منصة سطر
+            كما أهتم كثيرًا بأمر التصميم الرقمي (تصميم الواجهات خصوصًا)، والترجمة، ومفهوم المعرفة الحرة، وكذلك أهوى متابعة الكرتون، والأنمي كذلك.
+        </p>
+        <p>
+            أملك أيضًا مدونة شخصية أخرى متخصصة بالأمور التقنية، تستطيع تفقدها عبر الرابط
+            <a href="https://x7md.net/">x7md.net</a>
+        </p>
+    </section>
+</Pages>
