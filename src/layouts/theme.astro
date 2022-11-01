@@ -171,6 +171,8 @@ const topicName = tagsName[content.tags[0]].name;
 			])
 		}>
 		</script>
+		<script is:inline defer src="https://www.youtube.com/iframe_api">
+		</script>
 	<style>
 		:global(figcaption) {
 			font-size: calc(var(--unit) * 2vw);
@@ -186,15 +188,25 @@ const topicName = tagsName[content.tags[0]].name;
 			aspect-ratio: 16/9;
 		}
 	</style>
-	<script>
+	<script defer is:inline>
 		document.querySelectorAll('img[src$="#blur"]').forEach((ele)=> {
 			ele.addEventListener("click", (e)=> {
 				e.target.src = e.target.src.split("#")[0]
 				const clone = e.target.cloneNode(true);
 				e.target.replaceWith(clone);
 		})
-			
 		})
+		
+		function onYouTubeIframeAPIReady() {
+			document.querySelectorAll('[data-src]').forEach((ele)=> {
+				// ele.src = ele.dataset["src"];
+				var player = new YT.Player(ele.id, {
+				height: "720",
+				width: "1280",
+				videoId: ele.dataset["src"]
+			});
+			})
+		}
 	</script>
 	</body>
 </html>
