@@ -3,7 +3,7 @@ import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
 import Comment from "@components/Comment";
 const {content} = Astro.props;
-const {origin} = Astro.url;
+const {origin, href: pageLink} = Astro.url;
 import { Seo } from "astro-seo-meta"
 const urlFix = (urlString)=> {
 	if (urlString.indexOf('http://') === 0 || urlString.indexOf('https://') === 0){
@@ -27,7 +27,7 @@ const urlFix = (urlString)=> {
 		<meta property="og:site_name" content="mushkhbat">
 		<meta property="og:locale" content="ar_SA">
 		<meta property="og:type" content="website">
-		<link rel="canonical" href={new URL(content?.url, origin)}/>
+		<link rel="canonical" href={new URL(pageLink , origin)}/>
 		</head>
 	<body data-url={content?.url}>
 		<Navbar from="right" />

@@ -1,13 +1,14 @@
 ---
 import Navbar from "@components/Navbar.astro";
 import Footer from "@components/Footer.astro";
+import { author } from "@data/Author";
 import { Seo } from "astro-seo-meta"
 import tagsName from "@data/Topics.js"
 import TOC from "@components/TOC.astro";
 // import Comment from "@components/Comment";
 // import Youtube from "@components/Youtube.astro";
 const {content, headings} = Astro.props;
-const {origin} = Astro.url;
+const {origin, href: pageLink} = Astro.url;
 const isReview = content.isReview;
 const moreDataForArticle = content.articleData;
 let review = {}
@@ -28,12 +29,12 @@ review = { review: {
 			  },
 			  "name": content.title,
 			  "author": {
-				"@type": "Person",
-				"name": "حمد بنقالي"
+				...author
 			  },
 			  "publisher": {
-				"@type": "Person",
-				"name": "حمد بنقالي",
+				"@type": "Organization",
+				"name": "مشخبط",
+				"alternateName" : "mushkhbat",
 			  }
 			}
 			}
@@ -66,7 +67,7 @@ const topicName = tagsName[content.tags[0]].name;
 		<meta property="og:site_name" content="mushkhbat">
 		<meta property="og:locale" content="ar_SA">
 		<meta property="og:type" content="article">
-		<link rel="canonical" href={new URL(content?.url, origin)}/>
+		<link rel="canonical" href={new URL(content.url || pageLink, origin)}/>
 		<link rel="stylesheet" href="/style.css">
 		</head>
 	<body data-url={content.url}>
@@ -119,21 +120,7 @@ const topicName = tagsName[content.tags[0]].name;
 		<script type="application/ld+json" 
 		set:html={
 		JSON.stringify(
-			[
-			{
-				"@context": "https://schema.org",
-				"@type": "Organization",
-				"name": "مشخبط",
-				"url":  origin,
-				"logo": "https://mushkhbat.com/assets/logo-mushkhbat.png"
-			},
-			{
-			  "@context" : "https://schema.org",
-			  "@type" : "WebSite",
-			  "name" : "مدونة مشخبط",
-			  "alternateName" : "مشخبط",
-			  "url" : origin
-			},	
+			[	
 			{
 				"@context": "https://schema.org",
 				"@type": "BlogPosting",
@@ -142,9 +129,7 @@ const topicName = tagsName[content.tags[0]].name;
 				"datePublished": new Date(content.date).toISOString(),
 				... article,
 				"author": {
-					"@type": "Person",
-					"name": "حمد بنقالي",
-					"url": "https://x7md.net/about-me"
+					...author
 					}, ...review,
 				...(content?.dateModified ? {"dateModified": new Date(content?.dateModified).toISOString()} : {}),
 			},
