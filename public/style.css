@@ -604,6 +604,10 @@ nav[aria-label=breadcrumb] ul li {
   padding-inline-start: 0;
 }
 
+nav[aria-label=breadcrumb] ul li a:not([aria-current="page"]) {
+  text-decoration: none;
+}
+
 nav[aria-label=breadcrumb] li {
   display: inline;
   margin: 0;
@@ -670,4 +674,13 @@ summary > span {
 }
 .toc > ol [data-depth="4"] {
   padding-right: 1.15rem;
+}
+
+aside {
+  padding-top: var(--space-m);
+}
+
+.title h1 {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
 }

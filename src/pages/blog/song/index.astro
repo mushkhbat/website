@@ -4,10 +4,10 @@ const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
 //@ts-ignore
 const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 ---
-<Pages content={{title: "الكرتون"}}>
+<Pages content={{title: "أغاني"}}>
     <div class="pt-3">
 		<section id="hero">
-			<h1 class="title">قائمة بتدوينات عن الكرتون</h1>
+			<h1 class="title">قائمة بتدوينات الأغاني</h1>
 			<p>
                 الكرتون، هو المصطلح الشائع لوصف الرسوم المتحركة الأمريكية غالبًا، ويطلق على أعمال الأنميشن بشكل عام، باستثناء الأعمال اليابانية التي يطلق المعجبون بها اسم <a href="/blog/anime">اﻷنمي</a>.
 			</p>
