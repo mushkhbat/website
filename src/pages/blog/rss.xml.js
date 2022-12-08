@@ -13,7 +13,7 @@ export const get = () => rss({
     // simple example: generate items for every md file in /src/pages
     // see "Generating items" section for required frontmatter and advanced use cases
     items: posts.map((post) => ({
-        link: encodeURIComponent(post.url),
+        link: encodeURI(post.url).replace("&", "%26"),
         title: post.frontmatter.title,
         pubDate: post.frontmatter.date
       })),
