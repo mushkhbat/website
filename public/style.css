@@ -285,6 +285,12 @@ main {
 	max-width: var(--space-5xl);
 	margin: 0 auto;	
 }
+
+aside {
+  max-width: var(--space-5xl);
+	margin: 0 auto;	
+}
+
 .textSize-xs {
   font-size: var(--fontSize-xs);
   line-height: var(--lineHeight-xs);
@@ -683,4 +689,9 @@ aside {
 .title h1 {
   margin-block-start: 0.2em;
   margin-block-end: 0.2em;
+}
+
+[data-lyrics] li {
+  appearance: none;
+  list-style: none;
 }

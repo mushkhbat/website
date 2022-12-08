@@ -72,7 +72,6 @@ const topicName = tagsName[content.tags[0]].name;
 		</head>
 	<body data-url={content.url}>
 		<Navbar from="right" />
-		<main>
 			<aside>
 				<nav aria-label="breadcrumb">
 					<ul>
@@ -86,7 +85,10 @@ const topicName = tagsName[content.tags[0]].name;
 					</ul>
 				</nav>
 			</aside>
+			<main>
             <article class="content" id="article">
+
+			<header>
 				<div class="title">
 					<h1>{content.title}</h1>
 					<div class="datePost">
@@ -94,7 +96,6 @@ const topicName = tagsName[content.tags[0]].name;
 					</div>
 					<hr >
 				</div>
-				<section>
 					<details>
 					<summary>
 						<span>محتوى الصفحة</span>
@@ -103,11 +104,11 @@ const topicName = tagsName[content.tags[0]].name;
 					<TOC toc={[...headings]} />
 					</menu>
 					</details>
-				</section>
+			</header>
                 <slot></slot>
             </article>
+			</main>
 			<!-- <Comment client:load /> -->
-        </main>
 		<Footer />
 		<script is:inline src="/script.js"></script>
 		<script type="application/ld+json" 
