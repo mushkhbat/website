@@ -1,6 +1,7 @@
 ---
 import Pages from "@layouts/pages.astro";
 const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
+//@ts-ignore
 const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 ---
 <Pages content={{title: "الكرتون"}}>
@@ -13,7 +14,7 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
 		</section>
         <section>
             <ol>
-                {posts.map((item)=> {
+                {posts.map((item: any)=> {
                     return (
                         <li class="article">
                            

@@ -1,19 +1,21 @@
 ---
 import Pages from "@layouts/pages.astro";
 const postImportResult = import.meta.glob('./**/*.mdx', { eager: true });
+//@ts-ignore
 const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
 ---
-<Pages content={{title: "الأنمي"}}>
+<Pages content={{title: "أغاني"}}>
     <div class="pt-3">
 		<section id="hero">
-			<h1 class="title">قائمة بتدوينات عن اﻷنمي</h1>
+			<h1 class="title">قائمة بتدوينات الأغاني</h1>
 			<p>
-                الرسوم المتحركة اليابانية (أنمي)، من وقت لأخر أتابع إحداها... ولكنني لست ذاك الشخص المهووس بها (Weeb) وأفضل الكرتون الأمريكي على الأنمي في الغالب.
-			</p>
+                الأغان، نوع من الأعمال الإبداعية المسموعة، عادةً ما تتكون من كلمات ترادفة
+                 مع إيقاع وبعض الموسيقى غالبًا ما تحكي الأغنية موضوع معين
+            </p>
 		</section>
         <section>
             <ol>
-                {posts.map((item)=> {
+                {posts.map((item: any)=> {
                     return (
                         <li class="article">
                            
@@ -38,7 +40,7 @@ const posts = Object.values(postImportResult).sort((a, b) => new Date(b.frontmat
         </section>
 	</div>
 </Pages>
-<style scoped>
+<style>
 	h1.title {
     color: var(--c-primary);
 	}

@@ -72,49 +72,43 @@ const topicName = tagsName[content.tags[0]].name;
 		</head>
 	<body data-url={content.url}>
 		<Navbar from="right" />
-		<main>
-            <div class="title">
-                <h1>{content.title}</h1>
-				<div class="datePost">
-					<nav aria-label="breadcrumb">
-						<ul>
-						  <li><a href="/blog/">المدونة</a></li>
-						  <li>
-							<a href={new URL(content.url + "/..", origin)}>
-								{topicName}
-							</a>
-						  </li>
-						  <li><a href={content.url} aria-current="page">{content.title}</a></li>
-						</ul>
-					</nav>
-					<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
+			<aside>
+				<nav aria-label="breadcrumb">
+					<ul>
+						<li><a href="/blog/">المدونة</a></li>
+						<li>
+						<a href={new URL(content.url + "/..", origin)}>
+							{topicName}
+						</a>
+						</li>
+						<li><a href={content.url} aria-current="page">{content.title}</a></li>
+					</ul>
+				</nav>
+			</aside>
+			<main>
+            <article class="content" id="article">
+
+			<header>
+				<div class="title">
+					<h1>{content.title}</h1>
+					<div class="datePost">
+						<p>{content.dateModified ? "عُدلت" : "كُتبت"} في <time class="textSize-s" datetime={new Date(content.dateModified || content.date).toISOString()} >{toHijri(content.dateModified || content.date)}</time></p>
+					</div>
+					<hr >
 				</div>
-				<hr >
-				<div>
 					<details>
 					<summary>
 						<span>محتوى الصفحة</span>
 					</summary> 
-<menu class="toc">
-	<!-- {headings.map(itm => {
-		return (
-			<li data-depth={itm.depth}>
-				<a href={new URL(content?.url, origin) + "#" + itm.slug}>
-					{itm.text}
-				</a>
-			</li>)
-	})} -->
-<TOC toc={[...headings]} >
-</menu>
-					</details> 
-				</div>
-            	</div>
-
-            <article class="content" id="article">
+					<menu class="toc">
+					<TOC toc={[...headings]} />
+					</menu>
+					</details>
+			</header>
                 <slot></slot>
             </article>
+			</main>
 			<!-- <Comment client:load /> -->
-        </main>
 		<Footer />
 		<script is:inline src="/script.js"></script>
 		<script type="application/ld+json" 
@@ -171,11 +165,14 @@ const topicName = tagsName[content.tags[0]].name;
 			aspect-ratio: 16/9;
 		}
 	</style>
-	<script>
+	<script is:inline>
 		document.querySelectorAll('img[src$="#blur"]').forEach((ele)=> {
 			ele.addEventListener("click", (e)=> {
-				e.target.src = e.target.src.split("#")[0]
+				/**@ts-ignore */
+				e.target.src = e.target.src.split("#")[0];
+				/**@ts-ignore */
 				const clone = e.target.cloneNode(true);
+				/**@ts-ignore */
 				e.target.replaceWith(clone);
 		})
 			

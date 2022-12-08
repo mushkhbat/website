@@ -5,6 +5,9 @@ const tagsName = {
     cartoon: {
         name: "كرتون"
     },
+    song: {
+        name: "أغان"
+    },
 }
 
 export default tagsName;

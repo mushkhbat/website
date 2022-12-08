@@ -285,6 +285,12 @@ main {
 	max-width: var(--space-5xl);
 	margin: 0 auto;	
 }
+
+aside {
+  max-width: var(--space-5xl);
+	margin: 0 auto;	
+}
+
 .textSize-xs {
   font-size: var(--fontSize-xs);
   line-height: var(--lineHeight-xs);
@@ -604,6 +610,10 @@ nav[aria-label=breadcrumb] ul li {
   padding-inline-start: 0;
 }
 
+nav[aria-label=breadcrumb] ul li a:not([aria-current="page"]) {
+  text-decoration: none;
+}
+
 nav[aria-label=breadcrumb] li {
   display: inline;
   margin: 0;
@@ -670,4 +680,18 @@ summary > span {
 }
 .toc > ol [data-depth="4"] {
   padding-right: 1.15rem;
+}
+
+aside {
+  padding-top: var(--space-m);
+}
+
+.title h1 {
+  margin-block-start: 0.2em;
+  margin-block-end: 0.2em;
+}
+
+[data-lyrics] li {
+  appearance: none;
+  list-style: none;
 }
