@@ -1,2 +1,4 @@
 /blog/tsurekano/ /blog/anime/tsurekano 301
 /blog/tsurekano /blog/anime/tsurekano 301
+/rss.xml /blog/rss.xml 301
+/rss.xml/ /blog/rss.xml 301
