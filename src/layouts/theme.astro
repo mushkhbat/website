@@ -18,7 +18,7 @@ if (moreDataForArticle){
 }
 
 if (isReview){
-review = { review: {
+review = {
 			  "@type": "Review",
 			  "itemReviewed": {
 				...content.itemReview
@@ -36,7 +36,6 @@ review = { review: {
 				"name": "مشخبط",
 				"alternateName" : "mushkhbat",
 			  }
-			}
 			}
 }
 const toHijri = (date) => {
@@ -124,7 +123,9 @@ const topicName = tagsName[content.tags[0]].name;
 				... article,
 				"author": {
 					...author
-					}, ...review,
+					}, 
+					"hasPart": (isReview ? [review] : {})
+					,
 				...(content?.dateModified ? {"dateModified": new Date(content?.dateModified).toISOString()} : {}),
 			},
 			{
