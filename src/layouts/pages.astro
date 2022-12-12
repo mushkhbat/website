@@ -17,7 +17,7 @@ const urlFix = (urlString)=> {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" href="/style.css">
-		<link rel="alternate" type="application/rss+xml"  href={new URL("/rss.xml" , origin)}>
+		<link rel="alternate" type="application/rss+xml" title="منشورات مشخبط" href={new URL("/rss.xml" , origin)}>
 		<Seo 
 		title={"مشخبط" + (content.title ? " - " + content.title : "")}
 		description={content.desc ? content.desc: "مخشبط... نكتب عن الأعمال الإبداعية والترفيهية"}

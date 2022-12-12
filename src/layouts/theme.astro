@@ -68,7 +68,7 @@ const topicName = tagsName[content.tags[0]].name;
 		<meta property="og:type" content="article">
 		<link rel="canonical" href={new URL(content.url || pageLink, origin)}/>
 		<link rel="stylesheet" href="/style.css">
-		<link rel="alternate" type="application/rss+xml"  href={new URL("/rss.xml" , origin)}>
+		<link rel="alternate" type="application/rss+xml" title="منشورات مشخبط" href={new URL("/rss.xml" , origin)}>
 		<link rel="alternate" type="application/rss+xml"  href={new URL(content.url + "/.." + "/rss.xml", origin)}>
 		</head>
 	<body data-url={content.url}>

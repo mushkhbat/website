@@ -15,6 +15,7 @@ export const get = () => rss({
     items: posts.map((post) => ({
         link: encodeURI(post.url).replace("&", "%26"),
         title: post.frontmatter.title,
+        description: post.frontmatter.desc,
         pubDate: post.frontmatter.date
       })),
     // (optional) inject custom xml
