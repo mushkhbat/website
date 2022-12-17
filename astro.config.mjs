@@ -44,5 +44,16 @@ export default defineConfig({
     extendPlugins: 'astroDefaults'
     }
   )],
-  site: "https://www.mushkhbat.com/"
+  site: "https://www.mushkhbat.com/",
+  vite: {
+    server: {
+      proxy: {
+        '/assets/images/': {
+          target: 'https://images.mushkhbat.com/',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/assets\/images/, ''),
+        },
+      }
+    }
+  }
 });
