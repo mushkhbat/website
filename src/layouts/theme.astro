@@ -97,13 +97,15 @@ const topicName = tagsName[content.tags[0]].name;
 					</div>
 					<hr >
 				</div>
-					<details>
+					<details
+					class="toc-dropdown" role="navigation" aria-label="Table of contents"
+					>
 					<summary>
 						<span>محتوى الصفحة</span>
 					</summary> 
-					<menu class="toc">
-					<TOC toc={[...headings]} />
-					</menu>
+						<span class="toc">
+							<TOC toc={[...headings]} />
+						</span>
 					</details>
 			</header>
                 <slot></slot>
