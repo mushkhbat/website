@@ -1,9 +1,4 @@
 ---
-const posts =  [...await Astro.glob('../blog/**/*.mdx')].sort((b, a) => new Date(b.frontmatter?.date) - new Date(a.frontmatter?.date));
-const tags =  [
-        ... new Set(posts.map(post => post.frontmatter.tags).flat())
-    ];
-import tagsName from "@data/Topics.js"
 import Pages from "@layouts/pages.astro";
 ---
 <Pages content={{title: "حمد بنقالي | فريق التأليف"}}>
@@ -12,8 +7,7 @@ import Pages from "@layouts/pages.astro";
         <p>
             بدايةً، أدعى حمد بنقالي، مؤسس مشخبط
             <br />
-            وتستطيع أن تصفني بأني شخص مهووس بأمور الحاسوب إلى حد ما، لذلك أنشأت مدونة
-            مشخبط لمشاركة آرائي وأهتماماتي على الإنترنت...
+            وتستطيع أن تصفني بأني شخص مهووس بأمور الحاسوب إلى حد ما...
         </p>
         <p>
             أنا أيضًا مبرمج مواقع، حاصل على الوسام الذهب في تحديات جافاسكربت في منصة سطر
