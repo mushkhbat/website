@@ -45,11 +45,14 @@ const urlFix = (urlString)=> {
 			.h-full {
 				height: 100%;
 			}
+                        .flex-col {
+				flex-direction: column;
+			}
 		</style>
 		</head>
 	<body data-url={content?.url}>
  	<!--<Navbar from="right" />-->
-		<main class="flex justify-center items-center h-full">
+		<main class="flex flex-col justify-center items-center h-full">
              <slot />
         </main>
 		<Footer />
